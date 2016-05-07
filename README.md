@@ -47,6 +47,20 @@ var metaInfo = {name: "description", content: "FlowRouter SSR is Awesome"};
 DocHead.addMeta(metaInfo);
 ~~~
 
+#### DocHead.getMeta()
+
+Get the document meta value.
+
+> This API is reactive on the client. It only detect changes you made with `DocHead.addMeta()`.
+
+~~~js
+var metaInfo = {name: "description", content: "FlowRouter SSR is Awesome"};
+DocHead.addMeta(metaInfo);
+
+var description = DocHead.getMeta("description");
+console.log("This is the meta description", description);
+~~~
+
 #### DocHead.addLink(metaInfo)
 
 Add a Link tag.
@@ -55,6 +69,42 @@ Add a Link tag.
 var linkInfo = {rel: "icon", type: "image/png", href: "/icon.png"};
 DocHead.addLink(linkInfo);
 ~~~
+
+#### DocHead.getLink()
+
+Get the document meta value.
+
+> This API is reactive on the client. It only detect changes you made with `DocHead.addLink()`.
+
+~~~js
+var linkInfo = {rel: "icon", type: "image/png", href: "/icon.png"};
+DocHead.addLink(linkInfo);
+
+var iconLink = DocHead.getMeta("icon");
+console.log("This is the icon link", iconLink);
+~~~
+
+#### Default values
+
+Set tags if they have not been set yet
+
+~~~js
+var metaInfo = {name: "description", content: "FlowRouter SSR is Awesome"};
+DocHead.addMeta(metaInfo);
+
+
+var defaultMetaInfo = {name: "description", content: "FlowRouter SSR is kind of cool"};
+var defaultMetaImage = {name: "image", content: "/images/logo.png"};
+DocHead.addMeta(defaultMetaInfo, {isDefault: true});
+DocHead.addMeta(defaultMetaImage, {isDefault: true});
+
+var description = DocHead.getMeta("description");
+console.log("This is the meta description", description); // FlowRouter SSR is Awesome
+var image = DocHead.getMeta("image");
+console.log("This is the meta image", image); // /images/logo.png
+~~~
+
+
 
 #### DocHead.addLdJsonScript(jsonObj)
 
