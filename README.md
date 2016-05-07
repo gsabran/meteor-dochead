@@ -89,14 +89,15 @@ console.log("This is the icon link", iconLink);
 Set tags if they have not been set yet
 
 ~~~js
+var defaultMetaInfo = {name: "description", content: "FlowRouter SSR is kind of cool"};
+var defaultMetaImage = {name: "image", content: "/images/logo.png"};
+DocHead.setDefaultMeta(defaultMetaInfo);
+DocHead.setDefaultMeta(defaultMetaImage);
+
 var metaInfo = {name: "description", content: "FlowRouter SSR is Awesome"};
 DocHead.addMeta(metaInfo);
 
-
-var defaultMetaInfo = {name: "description", content: "FlowRouter SSR is kind of cool"};
-var defaultMetaImage = {name: "image", content: "/images/logo.png"};
-DocHead.addMeta(defaultMetaInfo, {isDefault: true});
-DocHead.addMeta(defaultMetaImage, {isDefault: true});
+DocHead.addDefaultAttributes();
 
 var description = DocHead.getMeta("description");
 console.log("This is the meta description", description); // FlowRouter SSR is Awesome
